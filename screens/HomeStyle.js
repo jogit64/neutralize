@@ -6,7 +6,7 @@ const sharedStyles = {
   width: "60%",
 };
 
-const AppStyle = StyleSheet.create({
+const HomeStyle = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
@@ -52,14 +52,6 @@ const AppStyle = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
   },
-
-  // Bouton pour le lien de création de compte
-  buttonLink: {
-    paddingVertical: 10,
-    marginBottom: 20,
-    ...sharedStyles,
-  },
-
   // Texte pour le lien de création de compte
   textLink: {
     color: "black",
@@ -83,4 +75,4 @@ const AppStyle = StyleSheet.create({
   },
 });
 
-export default AppStyle;
+export default HomeStyle;

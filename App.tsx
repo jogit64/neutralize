@@ -91,10 +91,10 @@ function AppContent({ navigation }) {
 
       {/* Bouton pour accéder à l'écran d'inscription */}
       <TouchableOpacity
-        style={AppStyle.button}
+        style={AppStyle.buttonLink}
         onPress={() => navigation.navigate("RegisterScreen")}
       >
-        <Text style={AppStyle.buttonText}>S'inscrire</Text>
+        <Text style={AppStyle.textLink}>Pas encore inscrit(e) ?</Text>
       </TouchableOpacity>
     </View>
   );

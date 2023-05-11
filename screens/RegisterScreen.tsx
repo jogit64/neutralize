@@ -11,13 +11,16 @@ import AppStyle from "../AppStyle";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 
-const RegisterScreen = ({ navigation }) => {
-  //const [firstName, setFirstName] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+interface RegisterScreenProps {
+  navigation: any;
+}
 
-  const handleRegister = async () => {
+const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) => {
+  const [firstName, setFirstName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const handleRegister = async (): Promise<void> => {
     try {
       const auth = getAuth();
       const userCredential = await createUserWithEmailAndPassword(
@@ -33,7 +36,7 @@ const RegisterScreen = ({ navigation }) => {
       await setDoc(userDocRef, { firstName });
 
       navigation.navigate("HomeScreen", { firstName });
-    } catch (error) {
+    } catch (error: any) {
       Alert.alert("Erreur", error.message);
     }
   };

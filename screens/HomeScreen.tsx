@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { getAuth, signOut } from "firebase/auth";
-import AppStyle from "../AppStyle";
+import HomeStyle from "./HomeStyle";
 
 const HomeScreen = ({ navigation, route }) => {
   const { firstName } = route.params;
@@ -20,30 +20,23 @@ const HomeScreen = ({ navigation, route }) => {
   };
 
   return (
-    <View style={AppStyle.container}>
-      <Image source={require("../assets/profil.png")} style={AppStyle.logo} />
-      <Text style={AppStyle.title}>Bonjour, {firstName} !</Text>
-      <Text style={AppStyle.sstitle}>Que souhaitez-vous faire ?</Text>
+    <View style={HomeStyle.container}>
+      <Image source={require("../assets/profil.png")} style={HomeStyle.logo} />
+      <Text style={HomeStyle.title}>Bonjour, {firstName} !</Text>
+      <Text style={HomeStyle.sstitle}>Que souhaitez-vous faire ?</Text>
 
       <TouchableOpacity
-        style={AppStyle.button}
-        onPress={() => console.log("Enregistrer des souvenirs")}
-      >
-        <Text style={AppStyle.buttonText}>Enregistrer des souvenirs</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={AppStyle.button}
+        style={HomeStyle.button}
         onPress={() => console.log("Tirer au sort des souvenirs")}
       >
-        <Text style={AppStyle.buttonText}>Tirer au sort des souvenirs</Text>
+        <Text style={HomeStyle.buttonText}>Tirer au sort des souvenirs</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
-        style={AppStyle.buttonDeconnect}
+        style={HomeStyle.buttonDeconnect}
         onPress={handleSignOut}
       >
-        <Text style={AppStyle.buttonDeconnectText}>Se déconnecter</Text>
+        <Text style={HomeStyle.buttonDeconnectText}>Se déconnecter</Text>
       </TouchableOpacity>
     </View>
   );
