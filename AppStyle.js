@@ -67,13 +67,7 @@ const AppStyle = StyleSheet.create({
     textAlign: "center",
     marginTop: 50,
   },
-  // Texte pour le bouton de déconnexion
-  buttonDeconnectText: {
-    color: "black",
-    fontSize: 16,
-    fontWeight: "bold",
-    textAlign: "center",
-  },
+
   // Logo de l'utilisateur
   logo: {
     width: 100,

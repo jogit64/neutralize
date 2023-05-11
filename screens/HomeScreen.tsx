@@ -29,14 +29,14 @@ const HomeScreen = ({ navigation, route }) => {
         style={HomeStyle.button}
         onPress={() => console.log("Tirer au sort des souvenirs")}
       >
-        <Text style={HomeStyle.buttonText}>Tirer au sort des souvenirs</Text>
+        <Text style={HomeStyle.buttonText}>Memory</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         style={HomeStyle.buttonDeconnect}
         onPress={handleSignOut}
       >
-        <Text style={HomeStyle.buttonDeconnectText}>Se déconnecter</Text>
+        <Text style={HomeStyle.textLink}>Se déconnecter</Text>
       </TouchableOpacity>
     </View>
   );

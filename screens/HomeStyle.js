@@ -20,13 +20,30 @@ const HomeStyle = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 20,
   },
+
+  // Sous-titre principal de l'application
+  sstitle: {
+    color: "black",
+    fontSize: 18,
+    marginBottom: 20,
+  },
+
   // Bouton de connexion et de déconnexion
   button: {
-    backgroundColor: "#4d4dff",
-    paddingVertical: 10,
-    marginBottom: 20,
-    ...sharedStyles,
+    backgroundColor: "blue",
+    padding: 10,
+    borderRadius: 50, // Augmentez le borderRadius pour un aspect plus arrondi
+    width: 100, // Définissez la largeur et la hauteur pour un bouton rond
+    height: 100,
+    justifyContent: "center", // Centrez le texte verticalement et horizontalement
+    alignItems: "center",
+    elevation: 5, // Ajoutez une ombre sur Android
+    shadowColor: "#000", // Ajoutez une ombre sur iOS
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
   },
+
   // Bouton de déconnexion
   buttonDeconnect: {
     paddingVertical: 10,
@@ -59,13 +76,7 @@ const HomeStyle = StyleSheet.create({
     textAlign: "center",
     marginTop: 50,
   },
-  // Texte pour le bouton de déconnexion
-  buttonDeconnectText: {
-    color: "black",
-    fontSize: 16,
-    fontWeight: "bold",
-    textAlign: "center",
-  },
+
   // Logo de l'utilisateur
   logo: {
     width: 100,
