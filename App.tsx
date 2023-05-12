@@ -26,7 +26,6 @@ import AppStyle from "./AppStyle.js";
 // Import des composants d'écran de l'application
 import RegisterScreen from "./screens/RegisterScreen";
 import HomeScreen from "./screens/HomeScreen";
-import ConnectScreen from "./screens/ConnectScreen"; // Import du composant ConnectScreen
 
 // Import du fichier de configuration Firebase
 import "./firebaseConfig";

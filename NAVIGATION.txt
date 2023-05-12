@@ -1,0 +1,36 @@
+----------------------------------------------
+SCHEMA DE NAVIGATION DE N·E·U·T·R·A·L·I·Z·E
+----------------------------------------------
+
+App (composant principal)
+|
+|-- NavigationContainer
+    |
+    |-- AuthStack.Navigator (Pile de navigation pour l'authentification)
+        |
+        |-- AuthStack.Screen (Écran "AppContent" (écran de connexion))
+        |-- AuthStack.Screen (Écran "RegisterScreen" (écran d'inscription))
+        |-- AuthStack.Screen (Écran "HomeTabs" (écran de navigation par onglets))
+            |
+            |-- Tab.Navigator (Barre d'onglets)
+                |
+                |-- Tab.Screen (Onglet "Home")
+                |   |
+                |   |-- HomeStack.Navigator
+                |       |
+                |       |-- HomeStack.Screen (Écran "HomeScreen")
+                |       |-- HomeStack.Screen (Écran "OtherHomeScreen") (si nécessaire)
+                |
+                |-- Tab.Screen (Onglet "Ajouter")
+                |   |
+                |   |-- AjouterStack.Navigator
+                |       |
+                |       |-- AjouterStack.Screen (Écran "Ajouter")
+                |       |-- AjouterStack.Screen (Écran "OtherAjouterScreen") (si nécessaire)
+                |
+                |-- Tab.Screen (Onglet "Le moment présent")
+                    |
+                    |-- MomentPresentStack.Navigator
+                        |
+                        |-- MomentPresentStack.Screen (Écran "Le moment présent")
+                        |-- MomentPresentStack.Screen (Écran "OtherMomentPresentScreen") (si nécessaire)
