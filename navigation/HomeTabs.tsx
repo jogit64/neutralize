@@ -56,7 +56,34 @@ function SoiStackScreen() {
 
 export default function HomeTabs() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          if (route.name === "Home") {
+            return <AntDesign name="home" size={size} color={color} />;
+          } else if (route.name === "Ajouter") {
+            return <Entypo name="add-to-list" size={size} color={color} />;
+          } else if (route.name === "Le Soi") {
+            return (
+              <MaterialCommunityIcons
+                name="meditation"
+                size={size}
+                color={color}
+              />
+            );
+          }
+          // Vous pouvez retourner un autre composant d'icône par défaut ici si vous en avez un
+        },
+        tabBarActiveTintColor: "tomato",
+        tabBarInactiveTintColor: "gray",
+        tabBarStyle: [
+          {
+            display: "flex",
+          },
+          null,
+        ],
+      })}
+    >
       <Tab.Screen name="Home" component={HomeStackScreen} />
       <Tab.Screen name="Ajouter" component={AjouterStackScreen} />
       <Tab.Screen name="Le Soi" component={SoiStackScreen} />
