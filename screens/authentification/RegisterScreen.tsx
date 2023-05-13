@@ -8,7 +8,7 @@ import {
   Alert,
   Image,
 } from "react-native";
-import AppStyle from "../AppStyle";
+import AppStyle from "../../styles/AppStyle";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 
@@ -44,7 +44,10 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) => {
 
   return (
     <View style={AppStyle.container}>
-      <Image source={require("../assets/profil.png")} style={AppStyle.logo} />
+      <Image
+        source={require("../../assets/profil.png")}
+        style={AppStyle.logo}
+      />
       <Text style={AppStyle.title}>Inscrivez-vous</Text>
 
       <TextInput

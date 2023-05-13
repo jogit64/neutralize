@@ -9,7 +9,7 @@ import {
 } from "react-native";
 
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import AppStyle from "../AppStyle.js";
+import AppStyle from "../../styles/AppStyle.js";
 
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 

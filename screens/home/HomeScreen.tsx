@@ -3,7 +3,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { getAuth, signOut } from "firebase/auth";
-import HomeStyle from "./HomeStyle";
+import HomeStyle from "../../styles/HomeStyle";
 
 const HomeScreen = ({ navigation, route }) => {
   const { firstName } = route.params;
@@ -23,7 +23,10 @@ const HomeScreen = ({ navigation, route }) => {
 
   return (
     <View style={HomeStyle.container}>
-      <Image source={require("../assets/profil.png")} style={HomeStyle.logo} />
+      <Image
+        source={require("../../assets/profil.png")}
+        style={HomeStyle.logo}
+      />
       <Text style={HomeStyle.title}>Bonjour, {firstName} !</Text>
       <Text style={HomeStyle.sstitle}>Que souhaitez-vous faire ?</Text>
 

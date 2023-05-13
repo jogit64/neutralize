@@ -21,11 +21,11 @@ import {
 } from "react-native";
 
 // Import pour le style de l'application
-import AppStyle from "./AppStyle.js";
+import AppStyle from "./styles/AppStyle.js";
 
 // Import des composants d'écran de l'application
-import RegisterScreen from "./screens/RegisterScreen";
-import HomeScreen from "./screens/HomeScreen";
+import RegisterScreen from "./screens/authentification/RegisterScreen";
+import HomeScreen from "./screens/home/HomeScreen";
 
 // Import du fichier de configuration Firebase
 import "./firebaseConfig";
