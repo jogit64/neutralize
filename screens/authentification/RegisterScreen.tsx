@@ -1,5 +1,5 @@
 // RegistrerScreen.tsx
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   View,
   Text,
@@ -11,6 +11,7 @@ import {
 import AppStyle from "../../styles/AppStyle";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
+import UserContext from "../../UserContext";
 
 interface RegisterScreenProps {
   navigation: any;
@@ -20,6 +21,8 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) => {
   const [firstName, setFirstName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+
+  const { setFirstName: setFirstNameInContext } = useContext(UserContext);
 
   const handleRegister = async (): Promise<void> => {
     try {
@@ -35,6 +38,9 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) => {
       const db = getFirestore();
       const userDocRef = doc(db, "users", user.uid);
       await setDoc(userDocRef, { firstName });
+
+      // Mettre à jour le prénom dans le contexte
+      setFirstNameInContext(firstName);
 
       navigation.navigate("HomeScreen", { firstName });
     } catch (error: any) {

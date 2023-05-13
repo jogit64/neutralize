@@ -1,5 +1,8 @@
 // Imports de React
-import React, { useState } from "react";
+import React, { useState, useContext } from "react"; // Ajoutez useContext ici
+
+// Imports du contexte
+import UserContext from "./UserContext";
 
 // Imports pour la navigation
 import { NavigationContainer } from "@react-navigation/native";
@@ -38,6 +41,9 @@ function AppContent({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // Importer le setter pour le prénom depuis le contexte
+  const { setFirstName } = useContext(UserContext);
+
   // Fonction qui gère le processus de connexion de l'utilisateur
   const handleLogin = async () => {
     try {
@@ -54,8 +60,11 @@ function AppContent({ navigation }) {
       const userDocSnap = await getDoc(userDocRef);
       const firstName = userDocSnap.get("firstName");
 
-      // Naviguer vers l'écran HomeScreen avec le prénom de l'utilisateur
-      navigation.navigate("HomeScreen", { firstName });
+      // Mettre à jour le prénom de l'utilisateur dans le contexte
+      setFirstName(firstName);
+
+      // Naviguer vers l'écran HomeScreen
+      navigation.navigate("HomeScreen");
     } catch (error) {
       Alert.alert("Erreur", error.message);
     }
@@ -101,18 +110,16 @@ function AppContent({ navigation }) {
 
 // Composant principal de l'application
 export default function App() {
+  const [firstName, setFirstName] = useState("");
   return (
-    // Conteneur principal de la navigation
-    <NavigationContainer>
-      {/* Définition de la pile de navigation */}
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {/* Définition de l'écran d'accueil */}
-        <Stack.Screen name="Home" component={AppContent} />
-        {/* Définition des autres écrans de l'application */}
-        {/* <Stack.Screen name="ConnectScreen" component={ConnectScreen} /> */}
-        <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-        <Stack.Screen name="HomeScreen" component={HomeScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <UserContext.Provider value={{ firstName, setFirstName }}>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Home" component={AppContent} />
+          <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+          <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </UserContext.Provider>
   );
 }

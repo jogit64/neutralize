@@ -1,12 +1,14 @@
 //HomeScreen.tsx
 
-import React from "react";
+import React, { useContext } from "react"; // Importer useContext
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { getAuth, signOut } from "firebase/auth";
 import HomeStyle from "../../styles/HomeStyle";
+import UserContext from "../../UserContext"; // Importer UserContext
 
-const HomeScreen = ({ navigation, route }) => {
-  const { firstName } = route.params;
+const HomeScreen = ({ navigation }) => {
+  // Supprimer route des props
+  const { firstName } = useContext(UserContext); // Utiliser le contexte pour obtenir firstName
 
   const handleSignOut = async () => {
     try {
