@@ -30,6 +30,8 @@ import AppStyle from "./styles/AppStyle.js";
 import RegisterScreen from "./screens/authentification/RegisterScreen";
 import HomeScreen from "./screens/home/HomeScreen";
 
+import HomeTabs from "./navigation/HomeTabs";
+
 // Import du fichier de configuration Firebase
 import "./firebaseConfig";
 // Import de la fonction createStackNavigator depuis la bibliothèque de navigation
@@ -63,8 +65,8 @@ function AppContent({ navigation }) {
       // Mettre à jour le prénom de l'utilisateur dans le contexte
       setFirstName(firstName);
 
-      // Naviguer vers l'écran HomeScreen
-      navigation.navigate("HomeScreen");
+      // Naviguer vers l'écran HomeTabs
+      navigation.navigate("HomeTabs");
     } catch (error) {
       Alert.alert("Erreur", error.message);
     }
@@ -117,7 +119,7 @@ export default function App() {
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Home" component={AppContent} />
           <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-          <Stack.Screen name="HomeScreen" component={HomeScreen} />
+          <Stack.Screen name="HomeTabs" component={HomeTabs} />
         </Stack.Navigator>
       </NavigationContainer>
     </UserContext.Provider>
