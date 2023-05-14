@@ -29,6 +29,9 @@ const EmotionStack = createStackNavigator();
 const AjouterStack = createStackNavigator();
 const SoiStack = createStackNavigator();
 
+// Import pour le style de l'application
+import HomeStyle from "../styles/HomeStyle.js";
+
 // Écrans de la pile Emotion
 function EmotionStackScreen() {
   // ----------------------------------------------
@@ -53,44 +56,42 @@ function EmotionStackScreen() {
                 alignItems: "center",
               }}
             >
-              <Text>Bonjour, {firstName} </Text>
-              <TouchableOpacity onPress={() => setModalVisible(true)}>
-                <AntDesign name="user" size={24} color="black" />
-              </TouchableOpacity>
-
+              <View style={HomeStyle.statusBar}>
+                <TouchableOpacity
+                  onPress={() => setModalVisible(true)}
+                  style={HomeStyle.userContainer}
+                >
+                  <Text style={HomeStyle.userName}>{firstName}</Text>
+                  <AntDesign name="logout" size={24} color="black" />
+                  <AntDesign name="user" size={26} color="black" />
+                </TouchableOpacity>
+              </View>
               <Modal
                 animationType="slide"
                 transparent={true}
                 visible={modalVisible}
-                onRequestClose={() => {
-                  setModalVisible(!modalVisible);
-                }}
+                onRequestClose={() => setModalVisible(!modalVisible)}
               >
-                <View
-                  style={{
-                    flex: 1,
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <View
-                    style={{
-                      backgroundColor: "white",
-                      padding: 35,
-                      alignItems: "center",
-                      shadowColor: "#000",
-                      shadowOffset: { width: 0, height: 2 },
-                      shadowOpacity: 0.25,
-                      shadowRadius: 4,
-                      elevation: 5,
-                    }}
-                  >
-                    <Text>Se déconnecter ?</Text>
-                    <Button title="Oui" onPress={handleSignOut} />
-                    <Button
-                      title="Non"
-                      onPress={() => setModalVisible(!modalVisible)}
-                    />
+                <View style={HomeStyle.modalContainer}>
+                  <View style={HomeStyle.modalContent}>
+                    <Text style={HomeStyle.modalTitle}>Se déconnecter ?</Text>
+                    <View style={HomeStyle.modalButtonsContainer}>
+                      <TouchableOpacity
+                        style={[
+                          HomeStyle.modalButton,
+                          HomeStyle.modalButtonYes,
+                        ]}
+                        onPress={handleSignOut}
+                      >
+                        <Text style={HomeStyle.modalButtonText}>Oui</Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        style={[HomeStyle.modalButton, HomeStyle.modalButtonNo]}
+                        onPress={() => setModalVisible(!modalVisible)}
+                      >
+                        <Text style={HomeStyle.modalButtonText}>Non</Text>
+                      </TouchableOpacity>
+                    </View>
                   </View>
                 </View>
               </Modal>

@@ -92,6 +92,75 @@ const HomeStyle = StyleSheet.create({
     resizeMode: "contain",
     marginBottom: 30,
   },
+
+  // La barre de statut en haut
+  statusBar: {
+    flexDirection: "row", // Aligner les éléments sur la même ligne
+    alignItems: "center", // Aligner les éléments verticalement
+    justifyContent: "center", // Aligner les éléments horizontalement
+  },
+
+  // le TouchableOpacity qui englobe la barre de statut
+  userContainer: {
+    flexDirection: "row", // Aligner les éléments sur la même ligne
+    alignItems: "center", // Aligner les éléments verticalement
+    justifyContent: "center", // Aligner les éléments horizontalement
+  },
+
+  // Le texte "Nom de l'utilisateur"
+  userName: {
+    color: "black",
+    fontSize: 16,
+    textAlign: "center",
+    marginTop: 10,
+    marginRight: 8,
+  },
+
+  // la modal
+  modalContainer: {
+    flex: 1,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modalContent: {
+    backgroundColor: "#fff",
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    borderRadius: 10,
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 20,
+  },
+  modalButtonsContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  modalButton: {
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginHorizontal: 10,
+    borderRadius: 5,
+  },
+  modalButtonYes: {
+    backgroundColor: "#4CAF50",
+  },
+  modalButtonNo: {
+    backgroundColor: "#F44336",
+  },
+  modalButtonText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
 });
 
 export default HomeStyle;
