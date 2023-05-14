@@ -42,7 +42,8 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) => {
       // Mettre à jour le prénom dans le contexte
       setFirstNameInContext(firstName);
 
-      navigation.navigate("HomeScreen", { firstName });
+      // navigation vers 'HomeTabs'
+      navigation.navigate("HomeTabs");
     } catch (error: any) {
       Alert.alert("Erreur", error.message);
     }

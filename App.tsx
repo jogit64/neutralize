@@ -13,6 +13,8 @@ import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 
+import { StatusBar } from "expo-status-bar";
+
 // Imports pour l'affichage
 import {
   View,
@@ -28,7 +30,7 @@ import AppStyle from "./styles/AppStyle.js";
 
 // Import des composants d'écran de l'application
 import RegisterScreen from "./screens/authentification/RegisterScreen";
-import HomeScreen from "./screens/home/HomeScreen";
+import HomeScreen from "./screens/emotion/EmotionScreen";
 
 import HomeTabs from "./navigation/HomeTabs";
 
@@ -38,7 +40,7 @@ import "./firebaseConfig";
 const Stack = createStackNavigator();
 
 // Composant qui définit le contenu de l'écran d'accueil de l'application
-function AppContent({ navigation }) {
+function AppConnect({ navigation }) {
   // Définition des états pour l'adresse email et le mot de passe
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -104,7 +106,7 @@ function AppContent({ navigation }) {
         style={AppStyle.buttonLink}
         onPress={() => navigation.navigate("RegisterScreen")}
       >
-        <Text style={AppStyle.textLink}>Pas encore inscrit(e) ?</Text>
+        <Text style={AppStyle.textLink}>Créer un compte</Text>
       </TouchableOpacity>
     </View>
   );
@@ -115,9 +117,10 @@ export default function App() {
   const [firstName, setFirstName] = useState("");
   return (
     <UserContext.Provider value={{ firstName, setFirstName }}>
+      {/* <StatusBar style="auto" /> */}
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Home" component={AppContent} />
+          <Stack.Screen name="AppConnect" component={AppConnect} />
           <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
           <Stack.Screen name="HomeTabs" component={HomeTabs} />
         </Stack.Navigator>
