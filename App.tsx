@@ -14,6 +14,10 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 import { StatusBar } from "expo-status-bar";
+// import { StatusBar } from "@react-native-community/status-bar";
+//import { StatusBar } from "react-native";
+
+//import { StatusBar } from "react-native";
 
 // Imports pour l'affichage
 import {
@@ -115,9 +119,14 @@ function AppConnect({ navigation }) {
 // Composant principal de l'application
 export default function App() {
   const [firstName, setFirstName] = useState("");
+
+  // Définir le style de la barre de statut
+  // StatusBar.setBackgroundColor("black");
+
   return (
     <UserContext.Provider value={{ firstName, setFirstName }}>
       {/* <StatusBar style="auto" /> */}
+      {/* <StatusBar style="dark-content" /> */}
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="AppConnect" component={AppConnect} />
