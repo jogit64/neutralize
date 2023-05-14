@@ -1,4 +1,7 @@
-// RegistrerScreen.tsx
+// ----------------------------------------------
+// RegisterScreen.tsx
+// ----------------------------------------------
+
 import React, { useState, useContext } from "react";
 import {
   View,
@@ -18,6 +21,10 @@ interface RegisterScreenProps {
 }
 
 const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) => {
+  // ----------------------------------------------
+  // Écran d'inscription de l'application
+  // ----------------------------------------------
+
   const [firstName, setFirstName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -33,7 +40,6 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) => {
         password
       );
       const { user } = userCredential;
-
       // Enregistrer le prénom de l'utilisateur dans Firestore
       const db = getFirestore();
       const userDocRef = doc(db, "users", user.uid);
@@ -42,7 +48,7 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) => {
       // Mettre à jour le prénom dans le contexte
       setFirstNameInContext(firstName);
 
-      // navigation vers 'HomeTabs'
+      // Navigation vers 'HomeTabs'
       navigation.navigate("HomeTabs");
     } catch (error: any) {
       Alert.alert("Erreur", error.message);
@@ -51,12 +57,15 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) => {
 
   return (
     <View style={AppStyle.container}>
+      {/* Logo de profil */}
       <Image
         source={require("../../assets/profil.png")}
         style={AppStyle.logo}
       />
+      {/* Titre */}
       <Text style={AppStyle.title}>Inscrivez-vous</Text>
 
+      {/* Champ de saisie du prénom */}
       <TextInput
         style={AppStyle.textInput}
         placeholder="Prénom"
@@ -65,6 +74,7 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) => {
         onChangeText={(text) => setFirstName(text)}
       />
 
+      {/* Champ de saisie de l'email */}
       <TextInput
         style={AppStyle.textInput}
         placeholder="Email"
@@ -74,6 +84,7 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) => {
         onChangeText={(text) => setEmail(text)}
       />
 
+      {/* Champ de saisie du mot de passe */}
       <TextInput
         style={AppStyle.textInput}
         placeholder="Mot de passe"
@@ -81,6 +92,8 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) => {
         secureTextEntry
         onChangeText={(text) => setPassword(text)}
       />
+
+      {/* Bouton d'inscription */}
       <TouchableOpacity style={AppStyle.button} onPress={handleRegister}>
         <Text style={AppStyle.buttonText}>S'inscrire</Text>
       </TouchableOpacity>

@@ -1,3 +1,7 @@
+// ----------------------------------------------
+// AppStyle.js
+// ----------------------------------------------
+
 import { StyleSheet } from "react-native";
 
 const sharedStyles = {

@@ -1,17 +1,31 @@
+// ----------------------------------------------
+// AjouterScreen.tsx
+// ----------------------------------------------
+
 import React, { useState, useEffect } from "react";
 import { View, Text, TextInput, Button } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 
 const AjouterScreen = () => {
+  // ----------------------------------------------
+  // Écran d'ajout de contenu
+  // ----------------------------------------------
+
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [inputText, setInputText] = useState(""); // Nouveau state pour le texte de l'input
 
-  // Ajouter ceci pour voir la valeur de selectedCategory dans la console
+  // ----------------------------------------------
+  // Effet pour la sélection de catégorie
+  // ----------------------------------------------
+
   useEffect(() => {
-    console.log(selectedCategory);
+    console.log(selectedCategory); // Ajouter ceci pour voir la valeur de selectedCategory dans la console
   }, [selectedCategory]);
 
+  // ----------------------------------------------
   // Fonction pour traiter l'envoi du texte
+  // ----------------------------------------------
+
   const handleSubmit = () => {
     // Votre logique pour enregistrer l'inputText dans la selectedCategory
     console.log("Texte à enregistrer : ", inputText);
@@ -22,8 +36,14 @@ const AjouterScreen = () => {
 
   return (
     <View>
+      {/* ----------------------------------------------
+      Titre
+      ---------------------------------------------- */}
       <Text>Ajouter Screen</Text>
 
+      {/* ----------------------------------------------
+      Picker pour sélectionner la catégorie
+      ---------------------------------------------- */}
       <Picker
         selectedValue={selectedCategory}
         onValueChange={(itemValue, itemIndex) => setSelectedCategory(itemValue)}
@@ -33,6 +53,9 @@ const AjouterScreen = () => {
         {/* Ajouter d'autres catégories ici... */}
       </Picker>
 
+      {/* ----------------------------------------------
+      TextInput pour entrer le texte
+      ---------------------------------------------- */}
       <TextInput
         value={inputText}
         onChangeText={setInputText}
@@ -43,6 +66,9 @@ const AjouterScreen = () => {
         placeholder="Tapez votre texte ici..." // Texte d'indication pour l'utilisateur
       />
 
+      {/* ----------------------------------------------
+      Bouton pour enregistrer
+      ---------------------------------------------- */}
       <Button
         title="Enregistrer"
         onPress={handleSubmit} // Appeler la fonction handleSubmit quand on appuie sur le bouton

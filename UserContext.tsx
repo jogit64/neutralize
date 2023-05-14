@@ -1,5 +1,10 @@
+// ----------------------------------------------
+// UserContext.tsx
+// ----------------------------------------------
+
 import React from "react";
 
+// Interface définissant la structure des données dans le contexte
 interface UserContextInterface {
   firstName: string;
   setFirstName: React.Dispatch<React.SetStateAction<string>>;

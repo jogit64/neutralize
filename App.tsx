@@ -1,3 +1,7 @@
+// ----------------------------------------------
+// Imports
+// ----------------------------------------------
+
 // Imports de React
 import React, { useState, useContext } from "react"; // Ajoutez useContext ici
 
@@ -13,11 +17,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 
-import { StatusBar } from "expo-status-bar";
-// import { StatusBar } from "@react-native-community/status-bar";
-//import { StatusBar } from "react-native";
-
-//import { StatusBar } from "react-native";
+// import { StatusBar } from "expo-status-bar";
 
 // Imports pour l'affichage
 import {
@@ -40,11 +40,19 @@ import HomeTabs from "./navigation/HomeTabs";
 
 // Import du fichier de configuration Firebase
 import "./firebaseConfig";
+
+// ----------------------------------------------
+// Composant principal de l'application
+// ----------------------------------------------
+
 // Import de la fonction createStackNavigator depuis la bibliothèque de navigation
 const Stack = createStackNavigator();
 
-// Composant qui définit le contenu de l'écran d'accueil de l'application
 function AppConnect({ navigation }) {
+  // ----------------------------------------------
+  // Écran d'accueil de l'application
+  // ----------------------------------------------
+
   // Définition des états pour l'adresse email et le mot de passe
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -79,7 +87,6 @@ function AppConnect({ navigation }) {
   };
 
   return (
-    // Conteneur principal du contenu de l'application
     <View style={AppStyle.container}>
       {/* Titre de l'application */}
       <Text style={AppStyle.title}>N·E·U·T·R·A·L·I·Z·E</Text>
@@ -116,7 +123,6 @@ function AppConnect({ navigation }) {
   );
 }
 
-// Composant principal de l'application
 export default function App() {
   const [firstName, setFirstName] = useState("");
 
@@ -124,9 +130,8 @@ export default function App() {
   // StatusBar.setBackgroundColor("black");
 
   return (
+    // Conteneur principal de l'application
     <UserContext.Provider value={{ firstName, setFirstName }}>
-      {/* <StatusBar style="auto" /> */}
-      {/* <StatusBar style="dark-content" /> */}
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="AppConnect" component={AppConnect} />

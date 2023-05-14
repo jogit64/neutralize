@@ -1,3 +1,7 @@
+// ----------------------------------------------
+// HomeStyle.js
+// ----------------------------------------------
+
 import { StyleSheet } from "react-native";
 
 const sharedStyles = {
@@ -13,6 +17,7 @@ const HomeStyle = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+
   // Titre principal de l'application
   title: {
     color: "black",
@@ -50,6 +55,7 @@ const HomeStyle = StyleSheet.create({
     marginTop: 25,
     ...sharedStyles,
   },
+
   // Champ de texte pour l'email et le mot de passe
   textInput: {
     height: 40,
@@ -62,6 +68,7 @@ const HomeStyle = StyleSheet.create({
     paddingHorizontal: 15,
     ...sharedStyles,
   },
+
   // Texte du bouton de connexion et de déconnexion
   buttonText: {
     color: "#ffffff",
@@ -69,6 +76,7 @@ const HomeStyle = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
   },
+
   // Texte pour le lien de création de compte
   textLink: {
     color: "black",

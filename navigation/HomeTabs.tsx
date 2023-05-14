@@ -1,4 +1,6 @@
-//HomeTabs
+// ----------------------------------------------
+// HomeTabs
+// ----------------------------------------------
 
 import React, { useContext, useState } from "react"; // Ajout du useState ici
 
@@ -28,8 +30,11 @@ const AjouterStack = createStackNavigator();
 const SoiStack = createStackNavigator();
 
 // Écrans de la pile Emotion
-// Écrans de la pile Emotion
 function EmotionStackScreen() {
+  // ----------------------------------------------
+  // Écran de la pile Emotion
+  // ----------------------------------------------
+
   const { firstName, handleSignOut } = useContext(UserContext);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -99,19 +104,27 @@ function EmotionStackScreen() {
 
 // Écrans de la pile Ajouter
 function AjouterStackScreen() {
+  // ----------------------------------------------
+  // Écran de la pile Ajouter
+  // ----------------------------------------------
+
   return (
     <AjouterStack.Navigator>
       <AjouterStack.Screen name="AjouterScreen" component={AjouterScreen} />
       {/* <AjouterStack.Screen
-        name="OtherAjouterScreen"
-        component={OtherAjouterScreen}
-      /> */}
+name="OtherAjouterScreen"
+component={OtherAjouterScreen}
+/> */}
     </AjouterStack.Navigator>
   );
 }
 
 // Écrans de la pile Soi
 function SoiStackScreen() {
+  // ----------------------------------------------
+  // Écran de la pile Soi
+  // ----------------------------------------------
+
   return (
     <SoiStack.Navigator>
       <SoiStack.Screen name="SoiScreen" component={SoiScreen} />
@@ -121,6 +134,10 @@ function SoiStackScreen() {
 }
 
 export default function HomeTabs() {
+  // ----------------------------------------------
+  // Tab Navigator
+  // ----------------------------------------------
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -151,6 +168,7 @@ export default function HomeTabs() {
         headerShown: false,
       })}
     >
+      {/* Écrans du Tab Navigator */}
       <Tab.Screen name="Emotion" component={EmotionStackScreen} />
       <Tab.Screen name="Ajouter" component={AjouterStackScreen} />
       <Tab.Screen name="Le Soi" component={SoiStackScreen} />
