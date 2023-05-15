@@ -2,27 +2,43 @@
 // AppStyle.js
 // ----------------------------------------------
 
-import { StyleSheet } from "react-native";
-
 const sharedStyles = {
   borderRadius: 5,
   paddingHorizontal: 15,
-  width: "60%",
+  width: 250,
 };
+import { StyleSheet } from "react-native";
 
 const AppStyle = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "flex-start",
+  },
+
+  contentContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "flex-start",
+  },
+
+  content: {
+    backgroundColor: "#192f35",
     alignItems: "center",
     justifyContent: "center",
   },
+
   // Titre principal de l'application
   title: {
-    color: "black",
+    color: "white",
     fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 20,
+    marginTop: 42,
+    marginBottom: 40,
+    backgroundColor: "#192f35",
+    // fontFamily: "LuckiestGuy",
+    // fontSize: 24,
+    // fontWeight: "bold",
   },
   // Bouton de connexion et de déconnexion
   button: {
@@ -58,9 +74,18 @@ const AppStyle = StyleSheet.create({
   },
 
   // Bouton pour le lien de création de compte
+  buttonLinkContainer: {
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
+    alignItems: "center",
+  },
+
+  // Bouton pour le lien de création de compte
   buttonLink: {
     paddingVertical: 10,
-    marginBottom: 20,
+    backgroundColor: "white",
+    marginBottom: 45,
     ...sharedStyles,
   },
 
@@ -69,7 +94,6 @@ const AppStyle = StyleSheet.create({
     color: "black",
     fontSize: 16,
     textAlign: "center",
-    marginTop: 50,
   },
 
   // Logo de l'utilisateur

@@ -27,6 +27,7 @@ import {
   TouchableOpacity,
   Alert,
   Image,
+  ImageBackground,
 } from "react-native";
 
 // Import pour le style de l'application
@@ -86,40 +87,45 @@ function AppConnect({ navigation }) {
     }
   };
 
+  const backgroundImage = require("./assets/profil.png");
   return (
-    <View style={AppStyle.container}>
-      {/* Titre de l'application */}
-      <Text style={AppStyle.title}>N·E·U·T·R·A·L·I·Z·E</Text>
+    <ImageBackground source={backgroundImage} style={AppStyle.container}>
+      <View style={AppStyle.contentContainer}>
+        {/* Titre de l'application */}
+        <Text style={AppStyle.title}>N·E·U·T·R·A·L·I·Z·E</Text>
 
-      {/* Logo de profil */}
-      <Image source={require("./assets/profil.png")} style={AppStyle.logo} />
+        {/* Logo de profil */}
+        {/* <Image source={require("./assets/profil.png")} style={AppStyle.logo} /> */}
 
-      {/* Formulaire de connexion de l'utilisateur */}
-      <TextInput
-        style={AppStyle.textInput}
-        placeholder="Email"
-        keyboardType="email-address"
-        autoCapitalize="none"
-        onChangeText={(text) => setEmail(text)}
-      />
-      <TextInput
-        style={AppStyle.textInput}
-        placeholder="Mot de passe"
-        secureTextEntry
-        onChangeText={(text) => setPassword(text)}
-      />
-      <TouchableOpacity style={AppStyle.button} onPress={handleLogin}>
-        <Text style={AppStyle.buttonText}>Se connecter</Text>
-      </TouchableOpacity>
+        {/* Formulaire de connexion de l'utilisateur */}
+        <TextInput
+          style={AppStyle.textInput}
+          placeholder="Email"
+          keyboardType="email-address"
+          autoCapitalize="none"
+          onChangeText={(text) => setEmail(text)}
+        />
+        <TextInput
+          style={AppStyle.textInput}
+          placeholder="Mot de passe"
+          secureTextEntry
+          onChangeText={(text) => setPassword(text)}
+        />
+        <TouchableOpacity style={AppStyle.button} onPress={handleLogin}>
+          <Text style={AppStyle.buttonText}>Se connecter</Text>
+        </TouchableOpacity>
 
-      {/* Bouton pour accéder à l'écran d'inscription */}
-      <TouchableOpacity
-        style={AppStyle.buttonLink}
-        onPress={() => navigation.navigate("RegisterScreen")}
-      >
-        <Text style={AppStyle.textLink}>Créer un compte</Text>
-      </TouchableOpacity>
-    </View>
+        {/* Conteneur pour le bouton d'inscription */}
+        <View style={AppStyle.buttonLinkContainer}>
+          <TouchableOpacity
+            style={AppStyle.buttonLink}
+            onPress={() => navigation.navigate("RegisterScreen")}
+          >
+            <Text style={AppStyle.textLink}>Créer un compte</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </ImageBackground>
   );
 }
 

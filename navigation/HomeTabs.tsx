@@ -142,7 +142,13 @@ export default function MyTabNavigator() {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           if (route.name === "Urgence") {
-            return <AntDesign name="heart" size={size} color={color} />;
+            return (
+              <MaterialCommunityIcons
+                name="car-emergency"
+                size={size}
+                color={color}
+              />
+            );
           } else if (route.name === "Projets inspirants") {
             return <MaterialIcons name="wb-sunny" size={size} color={color} />;
           } else if (route.name === "Sortir de la bulle") {
