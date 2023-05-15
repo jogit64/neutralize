@@ -1,13 +1,47 @@
 // SoiScreen.tsx
 
 import React from "react";
-import { View, Text } from "react-native";
+import { ScrollView, View, FlatList, Text } from "react-native";
 
 const SoiScreen = () => {
+  const horizontalData = [
+    { id: 1, title: "Lopem 1" },
+    { id: 2, title: "Lopem 2" },
+    { id: 3, title: "Lopem 3" },
+  ];
+
   return (
-    <View>
-      <Text>Moment Présent Screen</Text>
-    </View>
+    <ScrollView>
+      <View>
+        <Text>Content of vertical scroll...</Text>
+      </View>
+      <FlatList
+        data={horizontalData}
+        keyExtractor={(item) => item.id.toString()}
+        horizontal
+        renderItem={({ item }) => (
+          <View
+            style={{
+              width: 200,
+              height: 200,
+              backgroundColor: "gray",
+              margin: 10,
+            }}
+          >
+            <Text
+              style={{
+                color: "white",
+                fontSize: 20,
+                textAlign: "center",
+                marginTop: 80,
+              }}
+            >
+              {item.title}
+            </Text>
+          </View>
+        )}
+      />
+    </ScrollView>
   );
 };
 

@@ -14,7 +14,6 @@ const EmotionScreen = ({ navigation }) => {
   // Écran d'émotion de l'application
   // ----------------------------------------------
 
-  // Supprimer route des props
   const { firstName } = useContext(UserContext); // Utiliser le contexte pour obtenir firstName
 
   const handleSignOut = async () => {

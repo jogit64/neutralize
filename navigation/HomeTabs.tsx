@@ -19,7 +19,12 @@ import OtherSoiScreen from "../screens/soi/OtherSoiScreen";
 import RegisterScreen from "../screens/authentification/RegisterScreen";
 
 // Importation des icônes
-import { AntDesign, Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
+import {
+  AntDesign,
+  Entypo,
+  MaterialCommunityIcons,
+  MaterialIcons,
+} from "@expo/vector-icons";
 
 // Création du Tab Navigator
 const Tab = createBottomTabNavigator();
@@ -32,12 +37,10 @@ const SoiStack = createStackNavigator();
 // Import pour le style de l'application
 import HomeStyle from "../styles/HomeStyle.js";
 
-// Écrans de la pile Emotion
+// ----------------------------------------------
+// Écran de la pile Emotion
+// ----------------------------------------------
 function EmotionStackScreen() {
-  // ----------------------------------------------
-  // Écran de la pile Emotion
-  // ----------------------------------------------
-
   const { firstName, handleSignOut } = useContext(UserContext);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -103,12 +106,10 @@ function EmotionStackScreen() {
   );
 }
 
-// Écrans de la pile Ajouter
+// ----------------------------------------------
+// Écran de la pile Ajouter
+// ----------------------------------------------
 function AjouterStackScreen() {
-  // ----------------------------------------------
-  // Écran de la pile Ajouter
-  // ----------------------------------------------
-
   return (
     <AjouterStack.Navigator>
       <AjouterStack.Screen name="AjouterScreen" component={AjouterScreen} />
@@ -120,12 +121,10 @@ component={OtherAjouterScreen}
   );
 }
 
-// Écrans de la pile Soi
+// ----------------------------------------------
+// Écran de la pile Soi
+// ----------------------------------------------
 function SoiStackScreen() {
-  // ----------------------------------------------
-  // Écran de la pile Soi
-  // ----------------------------------------------
-
   return (
     <SoiStack.Navigator>
       <SoiStack.Screen name="SoiScreen" component={SoiScreen} />
@@ -134,20 +133,19 @@ function SoiStackScreen() {
   );
 }
 
-export default function HomeTabs() {
-  // ----------------------------------------------
-  // Tab Navigator
-  // ----------------------------------------------
-
+// ----------------------------------------------
+// Tab Navigator : fonctionnalité react navigation
+// ----------------------------------------------
+export default function MyTabNavigator() {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
-          if (route.name === "Emotion") {
+          if (route.name === "Urgence") {
             return <AntDesign name="heart" size={size} color={color} />;
-          } else if (route.name === "Ajouter") {
-            return <Entypo name="add-to-list" size={size} color={color} />;
-          } else if (route.name === "Le Soi") {
+          } else if (route.name === "Projets inspirants") {
+            return <MaterialIcons name="wb-sunny" size={size} color={color} />;
+          } else if (route.name === "Sortir de la bulle") {
             return (
               <MaterialCommunityIcons
                 name="meditation"
@@ -170,9 +168,9 @@ export default function HomeTabs() {
       })}
     >
       {/* Écrans du Tab Navigator */}
-      <Tab.Screen name="Emotion" component={EmotionStackScreen} />
-      <Tab.Screen name="Ajouter" component={AjouterStackScreen} />
-      <Tab.Screen name="Le Soi" component={SoiStackScreen} />
+      <Tab.Screen name="Urgence" component={EmotionStackScreen} />
+      <Tab.Screen name="Projets inspirants" component={AjouterStackScreen} />
+      <Tab.Screen name="Sortir de la bulle" component={SoiStackScreen} />
     </Tab.Navigator>
   );
 }
