@@ -4,16 +4,10 @@
 
 import { StyleSheet } from "react-native";
 
-const sharedStyles = {
-  borderRadius: 5,
-  paddingHorizontal: 15,
-  width: "60%",
-};
-
 const HomeStyle = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#192f35",
+    backgroundColor: "#C4D8E2",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -33,90 +27,52 @@ const HomeStyle = StyleSheet.create({
     marginBottom: 20,
   },
 
-  // Bouton de connexion et de déconnexion
-  button: {
-    backgroundColor: "blue",
-    padding: 10,
-    borderRadius: 50, // Augmentez le borderRadius pour un aspect plus arrondi
-    width: 100, // Définissez la largeur et la hauteur pour un bouton rond
-    height: 100,
-    justifyContent: "center", // Centrez le texte verticalement et horizontalement
+  // ----------------------------------------------
+  // Barre de statut haut
+  // ----------------------------------------------
+
+  // La barre de statut conteneur
+  statusBarContainer: {
+    flexDirection: "row",
     alignItems: "center",
-    elevation: 5, // Ajoutez une ombre sur Android
-    shadowColor: "#000", // Ajoutez une ombre sur iOS
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
+    backgroundColor: "#ffffff",
+    padding: 5,
   },
 
-  // Bouton de déconnexion
-  buttonDeconnect: {
-    paddingVertical: 10,
-    marginTop: 25,
-    ...sharedStyles,
+  // La barre de statut haut côté gauche
+  statusBarG: {
+    flexDirection: "row",
+    flex: 1,
+    justifyContent: "flex-start", // Aligner les éléments horizontalement
+    padding: 8,
   },
 
-  // Champ de texte pour l'email et le mot de passe
-  textInput: {
-    height: 40,
-    backgroundColor: "grey",
-    borderRadius: 5,
-    marginBottom: 20,
-    color: "#f5f5f5",
-    fontSize: 16,
-    fontWeight: "400",
-    paddingHorizontal: 15,
-    ...sharedStyles,
+  // La barre de statut haut côté droit
+  statusBarD: {
+    flexDirection: "row",
+    flex: 1,
+    justifyContent: "flex-end",
+    padding: 8,
   },
 
-  // Texte du bouton de connexion et de déconnexion
-  buttonText: {
-    color: "#ffffff",
-    fontSize: 16,
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-
-  // Texte pour le lien de création de compte
-  textLink: {
-    color: "black",
-    fontSize: 16,
-    textAlign: "center",
-    marginTop: 50,
-  },
-
-  // Logo de l'utilisateur
-  logo: {
-    width: 100,
-    height: 100,
-    resizeMode: "contain",
-    marginBottom: 30,
-  },
-
-  // La barre de statut en haut
-  statusBar: {
-    flexDirection: "row", // Aligner les éléments sur la même ligne
-    alignItems: "center", // Aligner les éléments verticalement
-    justifyContent: "center", // Aligner les éléments horizontalement
-  },
-
-  // le TouchableOpacity qui englobe la barre de statut
+  // statusBarD > TouchableOpacity
   userContainer: {
     flexDirection: "row", // Aligner les éléments sur la même ligne
     alignItems: "center", // Aligner les éléments verticalement
     justifyContent: "center", // Aligner les éléments horizontalement
   },
 
-  // Le texte "Nom de l'utilisateur"
+  // statusBarD > TouchableOpacity > Text
   userName: {
     color: "black",
     fontSize: 16,
     textAlign: "center",
-    marginTop: 10,
-    marginRight: 8,
+    marginLeft: 5,
   },
 
-  // la modal
+  // ----------------------------------------------
+  // Popup modal de déconnexion
+  // ----------------------------------------------
   modalContainer: {
     flex: 1,
     backgroundColor: "rgba(0, 0, 0, 0.5)",
@@ -124,43 +80,66 @@ const HomeStyle = StyleSheet.create({
     alignItems: "center",
   },
   modalContent: {
-    backgroundColor: "#fff",
+    backgroundColor: "#F5F5F5",
     padding: 35,
     alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
     borderRadius: 10,
+    elevation: 5,
   },
   modalTitle: {
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 20,
+    color: "#333333",
   },
   modalButtonsContainer: {
     flexDirection: "row",
     justifyContent: "center",
+    marginTop: 20,
   },
   modalButton: {
     paddingVertical: 10,
     paddingHorizontal: 20,
     marginHorizontal: 10,
     borderRadius: 5,
-  },
-  modalButtonYes: {
-    backgroundColor: "#4CAF50",
+    backgroundColor: "#E0E0E0",
   },
   modalButtonNo: {
-    backgroundColor: "#F44336",
+    backgroundColor: "#BDBDBD",
   },
   modalButtonText: {
-    color: "#fff",
+    color: "#FFFFFF",
     fontSize: 16,
     fontWeight: "bold",
     textAlign: "center",
   },
+  modalButtonNoText: {
+    color: "#FFFFFF",
+    fontSize: 16,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+
+  // ----------------------------------------------
+  // Barre de nav bas
+  // ----------------------------------------------
+
+  tabBar: {
+    display: "flex",
+  },
+  tabBarActiveTintColor: {
+    color: "black",
+  },
+  tabBarInactiveTintColor: {
+    color: "gray",
+  },
+  tabBarStyle: [
+    {
+      display: "flex",
+      backgroundColor: "#ffffff",
+    },
+    null,
+  ],
 });
 
 export default HomeStyle;

@@ -38,7 +38,7 @@ const SoiStack = createStackNavigator();
 import HomeStyle from "../styles/HomeStyle.js";
 
 // ----------------------------------------------
-// Écran de la pile Emotion
+// Écran de la pile Emotion + StatusBar
 // ----------------------------------------------
 function EmotionStackScreen() {
   const { firstName, handleSignOut } = useContext(UserContext);
@@ -52,21 +52,17 @@ function EmotionStackScreen() {
         options={{
           headerShown: true,
           header: () => (
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "flex-end",
-                alignItems: "center",
-              }}
-            >
-              <View style={HomeStyle.statusBar}>
+            <View style={HomeStyle.statusBarContainer}>
+              <View style={HomeStyle.statusBarG}>
+                <AntDesign name="user" size={22} color="#000" />
+                <Text style={HomeStyle.userName}>Salut {firstName}</Text>
+              </View>
+              <View style={HomeStyle.statusBarD}>
                 <TouchableOpacity
                   onPress={() => setModalVisible(true)}
                   style={HomeStyle.userContainer}
                 >
-                  <Text style={HomeStyle.userName}>{firstName}</Text>
-                  <AntDesign name="logout" size={24} color="black" />
-                  <AntDesign name="user" size={26} color="black" />
+                  <AntDesign name="logout" size={22} color="#000" />
                 </TouchableOpacity>
               </View>
               <Modal
@@ -162,14 +158,9 @@ export default function MyTabNavigator() {
           }
           // Vous pouvez retourner un autre composant d'icône par défaut ici si vous en avez un
         },
-        tabBarActiveTintColor: "tomato",
-        tabBarInactiveTintColor: "gray",
-        tabBarStyle: [
-          {
-            display: "flex",
-          },
-          null,
-        ],
+        tabBarActiveTintColor: HomeStyle.tabBarActiveTintColor.color,
+        tabBarInactiveTintColor: HomeStyle.tabBarInactiveTintColor.color,
+        tabBarStyle: HomeStyle.tabBarStyle,
         headerShown: false,
       })}
     >
