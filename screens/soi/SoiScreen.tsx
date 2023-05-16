@@ -2,6 +2,7 @@
 
 import React from "react";
 import { ScrollView, View, FlatList, Text } from "react-native";
+import HomeStyle from "../../styles/HomeStyle";
 
 const SoiScreen = () => {
   const horizontalData = [
@@ -11,37 +12,39 @@ const SoiScreen = () => {
   ];
 
   return (
-    <ScrollView>
-      <View>
-        <Text>Content of vertical scroll...</Text>
-      </View>
-      <FlatList
-        data={horizontalData}
-        keyExtractor={(item) => item.id.toString()}
-        horizontal
-        renderItem={({ item }) => (
-          <View
-            style={{
-              width: 200,
-              height: 200,
-              backgroundColor: "gray",
-              margin: 10,
-            }}
-          >
-            <Text
+    <View style={HomeStyle.container}>
+      <ScrollView>
+        <View>
+          <Text>Content of vertical scroll...</Text>
+        </View>
+        <FlatList
+          data={horizontalData}
+          keyExtractor={(item) => item.id.toString()}
+          horizontal
+          renderItem={({ item }) => (
+            <View
               style={{
-                color: "white",
-                fontSize: 20,
-                textAlign: "center",
-                marginTop: 80,
+                width: 200,
+                height: 200,
+                backgroundColor: "gray",
+                margin: 10,
               }}
             >
-              {item.title}
-            </Text>
-          </View>
-        )}
-      />
-    </ScrollView>
+              <Text
+                style={{
+                  color: "white",
+                  fontSize: 20,
+                  textAlign: "center",
+                  marginTop: 80,
+                }}
+              >
+                {item.title}
+              </Text>
+            </View>
+          )}
+        />
+      </ScrollView>
+    </View>
   );
 };
 

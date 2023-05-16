@@ -13,7 +13,7 @@ const sharedStyles = {
 const HomeStyle = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#192f35",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -164,3 +164,16 @@ const HomeStyle = StyleSheet.create({
 });
 
 export default HomeStyle;
+
+// ----------------------------------------------
+// HomeStyle.js
+// ----------------------------------------------
+
+// Fonction du fichier :
+// - Définit les styles utilisés dans l'écran d'accueil.
+
+// Détails :
+// - Utilise le module StyleSheet de React Native pour créer les styles.
+// - Définit les styles pour le conteneur principal, le titre, le sous-titre, les boutons, les champs de texte, les liens, le logo, la barre de statut, la modal, etc.
+// - Utilise des styles partagés pour certains éléments.
+// - Exporte les styles pour être utilisés dans d'autres composants.

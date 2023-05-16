@@ -148,3 +148,28 @@ export default function App() {
     </UserContext.Provider>
   );
 }
+
+// ----------------------
+// Fonction du fichier :
+// ----------------------
+// - Met en place un écran de connexion et d'accueil.
+// - Gère la navigation entre différents écrans (connexion, inscription, onglets d'accueil).
+// - Utilise un contexte utilisateur pour stocker le prénom de l'utilisateur.
+
+// ----------------------
+// Détails :
+// ----------------------
+// Écran de connexion et d'accueil (composant AppConnect):
+// - Gère le processus de connexion de l'utilisateur avec Firebase.
+// - Affiche un fond d'écran d'image et un formulaire de connexion.
+// - Utilise des composants React Native tels que View, Text, TextInput, TouchableOpacity pour l'interface utilisateur.
+
+// Configuration de la navigation (composant App):
+// - Configure la navigation en utilisant la bibliothèque de navigation.
+// - Utilise le composant NavigationContainer comme conteneur principal.
+// - Utilise le composant createStackNavigator pour créer une pile de navigation.
+// - Définit les écrans : AppConnect, RegisterScreen et HomeTabs.
+
+// Contexte utilisateur (fichier UserContext.js):
+// - Définit un contexte appelé UserContext.
+// - Fournit une valeur firstName et une fonction setFirstName pour stocker et mettre à jour le prénom de l'utilisateur.

@@ -180,3 +180,19 @@ export default function MyTabNavigator() {
     </Tab.Navigator>
   );
 }
+
+// ----------------------------------------------
+// HomeTabs
+// ----------------------------------------------
+
+// Fonction du fichier :
+// - Met en place un navigateur à onglets en bas de l'écran.
+// - Gère les différentes piles de navigation pour les écrans Emotion, Ajouter et Soi.
+// - Affiche des icônes correspondantes pour chaque onglet.
+// - Utilise un contexte utilisateur pour afficher le prénom de l'utilisateur et gérer la déconnexion.
+
+// Détails :
+// - Utilise la bibliothèque de navigation pour créer un navigateur à onglets (Tab Navigator).
+// - Utilise les composants createStackNavigator pour créer les piles de navigation pour les écrans Emotion, Ajouter et Soi.
+// - Affiche des icônes correspondantes pour chaque onglet en utilisant des icônes vectorielles.
+// - Gère le prénom de l'utilisateur et la déconnexion à l'aide du contexte utilisateur.
