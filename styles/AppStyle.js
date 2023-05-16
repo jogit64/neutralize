@@ -36,9 +36,8 @@ const AppStyle = StyleSheet.create({
     marginTop: 42,
     marginBottom: 40,
     backgroundColor: "#192f35",
-    // fontFamily: "LuckiestGuy",
-    // fontSize: 24,
-    // fontWeight: "bold",
+    fontFamily: "LuckiestGuy",
+    fontSize: 24,
   },
   // Bouton de connexion et de déconnexion
   button: {

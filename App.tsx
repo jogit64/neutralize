@@ -1,25 +1,9 @@
-// ----------------------------------------------
-// Imports
-// ----------------------------------------------
+// ----------------------
+// IMPORTATIONS
+// ----------------------
 
-// Imports de React
-import React, { useState, useContext } from "react"; // Ajoutez useContext ici
-
-// Imports du contexte
-import UserContext from "./UserContext";
-
-// Imports pour la navigation
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-
-// Imports pour Firebase
-import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { getFirestore, doc, getDoc } from "firebase/firestore";
-
-// import { StatusBar } from "expo-status-bar";
-
-// Imports pour l'affichage
+// Importations de bibliothèques React et React Native
+import React, { useState, useContext, useEffect } from "react";
 import {
   View,
   Text,
@@ -30,74 +14,79 @@ import {
   ImageBackground,
 } from "react-native";
 
-// Import pour le style de l'application
-import AppStyle from "./styles/AppStyle.js";
+// Importations des bibliothèques de navigation
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-// Import des composants d'écran de l'application
+// Importations des bibliothèques Firebase
+import { initializeApp } from "firebase/app";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+
+// Importations des composants et contextes personnalisés
+import UserContext from "./UserContext";
+import AppStyle from "./styles/AppStyle.js";
 import RegisterScreen from "./screens/authentification/RegisterScreen";
 import HomeScreen from "./screens/emotion/EmotionScreen";
-
 import HomeTabs from "./navigation/HomeTabs";
 
-// Import du fichier de configuration Firebase
+// Importations liées à Expo
+import * as SplashScreen from "expo-splash-screen";
+
+// Importations des hooks et configurations personnalisées
+import loadFonts from "./hooks/loadFonts.js";
 import "./firebaseConfig";
 
-// ----------------------------------------------
-// Composant principal de l'application
-// ----------------------------------------------
+// ----------------------
+// DEFINITIONS ET INITIALISATIONS
+// ----------------------
 
-// Import de la fonction createStackNavigator depuis la bibliothèque de navigation
+// Initialisation du stack de navigation
 const Stack = createStackNavigator();
 
-function AppConnect({ navigation }) {
-  // ----------------------------------------------
-  // Écran d'accueil de l'application
-  // ----------------------------------------------
+// ----------------------
+// COMPOSANTS
+// ----------------------
 
-  // Définition des états pour l'adresse email et le mot de passe
+// Composant pour la connexion de l'utilisateur
+function AppConnect({ navigation }) {
+  // État local pour les informations de connexion
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // Importer le setter pour le prénom depuis le contexte
+  // Utilisation du contexte pour récupérer la fonction de mise à jour du prénom
   const { setFirstName } = useContext(UserContext);
 
-  // Fonction qui gère le processus de connexion de l'utilisateur
+  // Gestion de la connexion de l'utilisateur
   const handleLogin = async () => {
     try {
-      // Récupérer l'instance d'authentification de Firebase
       const auth = getAuth();
 
-      // Connexion de l'utilisateur avec son email et son mot de passe
       await signInWithEmailAndPassword(auth, email, password);
 
-      // Récupérer le prénom de l'utilisateur à partir de Firestore
       const user = auth.currentUser;
       const db = getFirestore();
       const userDocRef = doc(db, "users", user.uid);
       const userDocSnap = await getDoc(userDocRef);
       const firstName = userDocSnap.get("firstName");
 
-      // Mettre à jour le prénom de l'utilisateur dans le contexte
       setFirstName(firstName);
 
-      // Naviguer vers l'écran HomeTabs
       navigation.navigate("HomeTabs");
     } catch (error) {
       Alert.alert("Erreur", error.message);
     }
   };
 
+  // Image en arrière-plan
   const backgroundImage = require("./assets/profil.png");
+
+  // Affichage du composant
   return (
     <ImageBackground source={backgroundImage} style={AppStyle.container}>
       <View style={AppStyle.contentContainer}>
-        {/* Titre de l'application */}
         <Text style={AppStyle.title}>N·E·U·T·R·A·L·I·Z·E</Text>
 
-        {/* Logo de profil */}
-        {/* <Image source={require("./assets/profil.png")} style={AppStyle.logo} /> */}
-
-        {/* Formulaire de connexion de l'utilisateur */}
         <TextInput
           style={AppStyle.textInput}
           placeholder="Email"
@@ -115,7 +104,6 @@ function AppConnect({ navigation }) {
           <Text style={AppStyle.buttonText}>Se connecter</Text>
         </TouchableOpacity>
 
-        {/* Conteneur pour le bouton d'inscription */}
         <View style={AppStyle.buttonLinkContainer}>
           <TouchableOpacity
             style={AppStyle.buttonLink}
@@ -129,14 +117,38 @@ function AppConnect({ navigation }) {
   );
 }
 
+// Composant principal de l'application
 export default function App() {
+  // État local pour le prénom et l'état de préparation de l'application
   const [firstName, setFirstName] = useState("");
+  const [isAppReady, setIsAppReady] = useState(false);
 
-  // Définir le style de la barre de statut
-  // StatusBar.setBackgroundColor("black");
+  // Préparation de l'application au lancement
+  useEffect(() => {
+    async function prepare() {
+      try {
+        await SplashScreen.preventAutoHideAsync();
 
+        await loadFonts();
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        setIsAppReady(true);
+
+        SplashScreen.hideAsync();
+      }
+    }
+
+    prepare();
+  }, []);
+
+  // Si l'application n'est pas prête, ne rien afficher
+  if (!isAppReady) {
+    return null;
+  }
+
+  // Affichage du composant
   return (
-    // Conteneur principal de l'application
     <UserContext.Provider value={{ firstName, setFirstName }}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>

@@ -7,7 +7,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "androidStatusBar": {
-      "backgroundColor": "#ffffff",
+      "backgroundColor": "#000",
       "translucent": false
     },
     "splash": {
