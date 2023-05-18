@@ -85,7 +85,10 @@ function AppConnect({ navigation }) {
   return (
     <ImageBackground source={backgroundImage} style={AppStyle.container}>
       <View style={AppStyle.contentContainer}>
-        <Text style={AppStyle.title}>N·E·U·T·R·A·L·I·Z·E</Text>
+        <Text style={AppStyle.title}>THE·GOOD·PLACE</Text>
+        <Text> ✨ * . * . * ✨ . ✨ * * ✨ .</Text>
+        <Text> ✨ * . * . * ✨ . ✨ * * ✨ .</Text>
+        <Text> ✨ * . * . * ✨ . ✨ * * ✨ .</Text>
 
         <TextInput
           style={AppStyle.textInput}
