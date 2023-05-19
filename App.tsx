@@ -34,7 +34,9 @@ import HomeTabs from "./navigation/HomeTabs";
 import * as SplashScreen from "expo-splash-screen";
 
 // Importations des hooks et configurations personnalisées
-import loadFonts from "./hooks/loadFonts.js";
+// import loadFonts from "./hooks/loadFonts.js";
+import { useFonts } from "expo-font";
+
 import "./firebaseConfig";
 
 // ----------------------
@@ -125,6 +127,10 @@ export default function App() {
   // État local pour le prénom et l'état de préparation de l'application
   const [firstName, setFirstName] = useState("");
   const [isAppReady, setIsAppReady] = useState(false);
+  const [fontsLoaded] = useFonts({
+    LuckiestGuy: require("./assets/fonts/LuckiestGuy.ttf"),
+    LemonLove: require("./assets/fonts/LemonLove.otf"),
+  });
 
   // Préparation de l'application au lancement
   useEffect(() => {
@@ -132,13 +138,13 @@ export default function App() {
       try {
         await SplashScreen.preventAutoHideAsync();
 
-        await loadFonts();
+        // await loadFonts();
       } catch (e) {
         console.warn(e);
       } finally {
         setIsAppReady(true);
 
-        SplashScreen.hideAsync();
+        // SplashScreen.hideAsync();
       }
     }
 
@@ -146,12 +152,27 @@ export default function App() {
   }, []);
 
   // Si l'application n'est pas prête, ne rien afficher
+  // if (!isAppReady || !fontsLoaded) {
+  //   return undefined;
+  // } else {
+  //   SplashScreen.hideAsync();
+  // }
   if (!isAppReady) {
-    return null;
+    return undefined;
+  } else {
+    SplashScreen.hideAsync();
   }
 
   // Affichage du composant
   return (
+    // <View style={AppStyle.container}>
+    //   <Text style={{ fontFamily: "LemonLove", fontSize: 30 }}>
+    //     LemonLove font
+    //   </Text>
+    //   <Text>Defautl font</Text>
+    //   {/* <statusbar style="auto" /> */}
+    // </View>
+
     <UserContext.Provider value={{ firstName, setFirstName }}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>

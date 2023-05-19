@@ -2,12 +2,14 @@
 // EmotionScreen.tsx
 // ----------------------------------------------
 
-import React, { useContext } from "react"; // Importer useContext
+import React, { useContext, useEffect } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { getAuth, signOut } from "firebase/auth";
 import HomeStyle from "../../styles/HomeStyle";
 import UserContext from "../../UserContext"; // Importer UserContext
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
 
 const EmotionScreen = ({ navigation }) => {
   // ----------------------------------------------
@@ -26,6 +28,35 @@ const EmotionScreen = ({ navigation }) => {
     }
   };
 
+  const [fontsLoaded] = useFonts({
+    LuckiestGuy: require("../../assets/fonts/LuckiestGuy.ttf"),
+    LemonLove: require("../../assets/fonts/LemonLove.otf"),
+  });
+
+  useEffect(() => {
+    async function prepare() {
+      try {
+        await SplashScreen.preventAutoHideAsync();
+
+        // await loadFonts();
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        // setIsAppReady(true);
+        // SplashScreen.hideAsync();
+      }
+    }
+
+    prepare();
+  }, []);
+
+  // Si l'application n'est pas prête, ne rien afficher
+  if (!fontsLoaded) {
+    return undefined;
+  } else {
+    SplashScreen.hideAsync();
+  }
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={HomeStyle.container}>
@@ -40,7 +71,10 @@ const EmotionScreen = ({ navigation }) => {
         {/* ----------------------------------------------
         Titre
         ---------------------------------------------- */}
-        <Text style={HomeStyle.title}>Bonjour, {firstName} !</Text>
+        <Text style={HomeStyle.titre}>Bonjour, {firstName} !</Text>
+        <Text style={{ fontFamily: "LemonLove", fontSize: 30 }}>
+          LemonLove font
+        </Text>
 
         {/* ----------------------------------------------
         Sous-titre
