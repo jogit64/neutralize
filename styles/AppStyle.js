@@ -10,85 +10,79 @@ const sharedStyles = {
 import { StyleSheet } from "react-native";
 
 const AppStyle = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "flex-start",
-  },
+  // container: {
+  //   flex: 1,
+  //   alignItems: "center",
+  //   justifyContent: "flex-start",
+  // },
 
   contentContainer: {
     flex: 1,
     alignItems: "center",
     justifyContent: "flex-start",
+    backgroundColor: "#1b73b3",
   },
 
-  content: {
-    backgroundColor: "#192f35",
-    alignItems: "center",
-    justifyContent: "center",
-  },
+  // content: {
+  //   alignItems: "center",
+  //   justifyContent: "center",
+  // },
 
-  // Titre principal de l'application
-  title: {
-    color: "white",
-    fontSize: 24,
-    fontWeight: "bold",
-    marginTop: 42,
+  image: {
+    width: 100,
+    height: 250,
+    marginTop: 30,
     marginBottom: 40,
-    backgroundColor: "#192f35",
-    fontFamily: "LuckiestGuy",
-    fontSize: 24,
   },
-  // Bouton de connexion et de déconnexion
-  button: {
-    backgroundColor: "#4d4dff",
-    paddingVertical: 10,
-    marginBottom: 20,
-    ...sharedStyles,
-  },
-  // Bouton de déconnexion
-  buttonDeconnect: {
-    paddingVertical: 10,
-    marginTop: 25,
-    ...sharedStyles,
-  },
-  // Champ de texte pour l'email et le mot de passe
+
+  // * INPUT : email, mot de pass
   textInput: {
     height: 40,
-    backgroundColor: "grey",
+    backgroundColor: "white",
     borderRadius: 5,
     marginBottom: 20,
-    color: "#f5f5f5",
+    color: "#000",
     fontSize: 16,
     fontWeight: "400",
     paddingHorizontal: 15,
     ...sharedStyles,
   },
-  // Texte du bouton de connexion et de déconnexion
+
+  // * BOUTON : se connecter
+  // Bouton se connecter
+  button: {
+    backgroundColor: "#fff",
+
+    paddingVertical: 10,
+    marginBottom: 20,
+    ...sharedStyles,
+  },
+  // Texte du bouton se connecter
   buttonText: {
-    color: "#ffffff",
+    color: "#1b73b3",
     fontSize: 16,
-    fontWeight: "bold",
     textAlign: "center",
   },
 
-  // Bouton pour le lien de création de compte
+  // * BOUTON : créer un compte
+  // Container View
   buttonLinkContainer: {
-    position: "absolute",
-    bottom: 0,
+    //position: "absolute",
+    //bottom: 0,
     width: "100%",
     alignItems: "center",
+    marginTop: 50,
   },
 
-  // Bouton pour le lien de création de compte
+  // Bouton dans le TouchableOpacity
   buttonLink: {
     paddingVertical: 10,
-    backgroundColor: "white",
+    //    backgroundColor: "white",
     marginBottom: 45,
     ...sharedStyles,
   },
 
-  // Texte pour le lien de création de compte
+  // Texte du bouton créer un compte
   textLink: {
     color: "black",
     fontSize: 16,
@@ -96,12 +90,17 @@ const AppStyle = StyleSheet.create({
   },
 
   // Logo de l'utilisateur
-  logo: {
-    width: 100,
-    height: 100,
-    resizeMode: "contain",
-    marginBottom: 30,
-  },
+  // logo: {
+  //   width: 100,
+  //   height: 100,
+  //   resizeMode: "contain",
+  //   marginBottom: 30,
+  // },
+
+  // spinnerOverlay: {
+  //   backgroundColor: "#1b73b3",
+  //   color: "black",
+  // },
 });
 
 export default AppStyle;

@@ -13,12 +13,10 @@ const HomeStyle = StyleSheet.create({
   },
 
   // Titre principal de l'application
-  titre: {
+  title: {
     color: "black",
     fontWeight: "bold",
     marginBottom: 60,
-    fontFamily: "LemonLove",
-    fontSize: 14,
   },
 
   // Sous-titre principal de l'application

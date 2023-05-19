@@ -71,7 +71,7 @@ const EmotionScreen = ({ navigation }) => {
         {/* ----------------------------------------------
         Titre
         ---------------------------------------------- */}
-        <Text style={HomeStyle.titre}>Bonjour, {firstName} !</Text>
+        <Text style={HomeStyle.title}>Bonjour, {firstName} !</Text>
         <Text style={{ fontFamily: "LemonLove", fontSize: 30 }}>
           LemonLove font
         </Text>
