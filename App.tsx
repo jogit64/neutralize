@@ -98,7 +98,7 @@ function AppConnect({ navigation }) {
 
   // Images
   const backgroundImage = require("./assets/profil.png");
-  const image2men = require("./assets/2men.png");
+  const image2men = require("./assets/l2men.png");
 
   // Affichage du composant
   return (
